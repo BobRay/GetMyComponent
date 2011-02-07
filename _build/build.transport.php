@@ -25,7 +25,7 @@
  *
  * Description: Installs the files of the GetMyComponent build
  * script template.
- * 
+ *
  * @package GetMyComponent
  * @subpackage build
  */
@@ -88,10 +88,10 @@ require_once $sources['build'].'build.config.php';
 require_once MODX_CORE_PATH . 'model/modx/modx.class.php';
 $modx= new modX();
 $modx->initialize('mgr');
-$modx->log(xPDO::LOG_LEVEL_INFO, "Initializing MODx."); flush();
+
 $modx->setLogLevel(xPDO::LOG_LEVEL_INFO);
 $modx->setLogTarget(XPDO_CLI_MODE ? 'ECHO' : 'HTML');
-
+$modx->log(xPDO::LOG_LEVEL_INFO, "Initializing MODx."); flush();
 $modx->log(xPDO::LOG_LEVEL_INFO, "Loading Package Builder."); flush();
 /* load builder */
 $modx->loadClass('transport.modPackageBuilder','',false, true);
@@ -109,17 +109,11 @@ $category->set('category',$categoryName);
 $attr = array(xPDOTransport::UNIQUE_KEY => 'category',
     xPDOTransport::PRESERVE_KEYS => false,
     xPDOTransport::UPDATE_OBJECT => true,
-    xPDOTransport::ABORT_INSTALL_ON_VEHICLE_FAIL => true,
 );
 $vehicle = $builder->createVehicle($category,$attr);
 
 
-$modx->log(xPDO::LOG_LEVEL_INFO, "Packaging Files (this will take a while) . . ."); flush();
-
-$modx->log(modX::LOG_LEVEL_INFO,'Adding in Script Validator.');
-/*$vehicle->validate('php',array(
-    'source' => $sources['build'] . 'preinstall.script.php',
-));*/
+$modx->log(xPDO::LOG_LEVEL_INFO, "Packaging Files (this may take a while) . . ."); flush();
 
 $vehicle->resolve('file',array(
             'source' => $sourcePath,
