@@ -99,29 +99,12 @@ $builder = new modPackageBuilder($modx);
 $package = $builder->createPackage(PKG_NAME_LOWER, PKG_VERSION, PKG_RELEASE);
 $builder->registerNamespace(PKG_NAME_LOWER,false,true,'{core_path}components/'.PKG_NAME_LOWER.'/');
 flush();
-/* create category  The category is required so we can attach a validator */
-
-$categoryName = 'MyComponent';
-$category= $modx->newObject('modCategory');
-$category->set('id',1);
-$category->set('category',$categoryName);
-
-$attr = array(xPDOTransport::UNIQUE_KEY => 'category',
-    xPDOTransport::PRESERVE_KEYS => false,
-    xPDOTransport::UPDATE_OBJECT => true,
-);
-$vehicle = $builder->createVehicle($category,$attr);
-
 
 $modx->log(xPDO::LOG_LEVEL_INFO, "Packaging Files (this may take a while) . . ."); flush();
 
-$vehicle->resolve('file',array(
-            'source' => $sourcePath,
-            'target' => $targetPath,
-        ));
-
-$builder->putVehicle($vehicle);
-
+$obj = array ('source' => $sourcePath,'target' =>$targetPath);
+$attributes = array('vehicle_class' => 'xPDOFileVehicle');
+$package->put($obj,$attributes);
 
 $builder->setPackageAttributes(array(
     'license' => file_get_contents($sources['docs'] . 'license.txt'),
@@ -130,6 +113,7 @@ $builder->setPackageAttributes(array(
 
 ));
 $modx->log(xPDO::LOG_LEVEL_INFO, "Zipping up Package. Please wait . . ."); flush();
+
 /* Last step - zip up the package */
 $builder->pack();
 
