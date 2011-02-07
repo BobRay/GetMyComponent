@@ -1,0 +1,5 @@
+Changelog for GetMyComponent
+
+GetMyComponent 1.0.0
+-------------------
+Initial Version
