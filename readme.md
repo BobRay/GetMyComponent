@@ -4,7 +4,7 @@ GetMyComponent Extra for MODx Revolution
 
 **Author:** Bob Ray <http://bobsguides.com> [Bob's Guides](http://bobsguides.com)
 
-Documentation is available at [Bob's Guides] (http://bobsguides.com/mycomponent-tutorial.html)
+Documentation is available at [Bob's Guides](http://bobsguides.com/mycomponent-tutorial.html)
 
 GetMyComponent creates the files for the MyComponent package, a generic build script for MODx Revolution components.
 Since MyComponent is itself a build script, it can't be installed through Package Manager. Once you have
