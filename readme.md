@@ -11,4 +11,4 @@ Since MyComponent is itself a build script, it can't be installed through Packag
 installed GetMyComponent, the MyComponent files will be in place at assets/mycomponents/mycomponent/.
 
 From that point on, the GetMyComponent package should be ignored. Note that if you uninstall
-or remove it, all the files of MyComponent will be removed.
+or remove it, however, all the files of MyComponent will be removed.

@@ -31,7 +31,7 @@
  */
 
 
-/* See the GetMyComponent/core/docs/notes.txt file for
+/* See the GetMyComponent/core/docs/tutorial.html file for
  * more detailed information about using the package
  *
  * Search and replace tasks:
